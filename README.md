@@ -1,4 +1,4 @@
-# A repository fork from [https://github.com/wmnnd/nginx-certbot](@wmnnd)
+# A repository fork from [https://github.com/wmnnd/nginx-certbot](nginx-certbot)
 
 ## 用途
 
