@@ -5,9 +5,9 @@ if ! [ -x "$(command -v docker-compose)" ]; then
   exit 1
 fi
 
-domains=(example.org www.example.org)
+domains=(cymba.cn)
 rsa_key_size=4096
-data_path="./data/certbot"
+data_path="./certbot"
 email="" # Adding a valid address is strongly recommended
 staging=0 # Set to 1 if you're testing your setup to avoid hitting request limits
 
@@ -66,14 +66,18 @@ esac
 # Enable staging mode if needed
 if [ $staging != "0" ]; then staging_arg="--staging"; fi
 
-docker-compose run --rm --entrypoint "\
-  certbot certonly --webroot -w /var/www/certbot \
-    $staging_arg \
-    $email_arg \
-    $domain_args \
-    --rsa-key-size $rsa_key_size \
-    --agree-tos \
-    --force-renewal" certbot
+#docker-compose run --rm --entrypoint "\
+#  certbot certonly --webroot -w /var/www/certbot \
+#    $staging_arg \
+#    $email_arg \
+#    $domain_args \
+#    --rsa-key-size $rsa_key_size \
+#    --agree-tos \
+#    --force-renewal" certbot
+
+# Ôö¼Ódns½âÎö
+docker-compose run --rm --entrypoint   "certbot certonly  -w /var/www/certbot --preferred-challenges dns --manual  -d *.cymba.cn --server https://acme-v02.api.letsencrypt.org/directory"  certbot
+
 echo
 
 echo "### Reloading nginx ..."
