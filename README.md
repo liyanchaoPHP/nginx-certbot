@@ -17,7 +17,7 @@
 2.安装docker-compose，参考： <a href="https://www.4spaces.org/centos-install-docker-compose/" target="_blank">CENTOS安装Docker Compose</a>；
 
 3.修改配置；
-
+* 注意修改./data目录映射
 * 修改`init-letsencrypt.sh`文件中的域名及邮箱；
 * 修改`data/nginx`中的域名；
 
